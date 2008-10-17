@@ -1,0 +1,78 @@
+<project name="jfsdesktop" default="help">
+
+<description>
+ Simple application for desktop-searching for files
+</description>
+
+	<property file="build.properties" />
+
+	<target name="help">
+		<echo message="ant jfsdesktop" />
+	</target>
+
+	<target name="init">
+		<condition property="os.family" value="unix">
+			<os family="unix" />
+		</condition>
+		<condition property="os.family" value="windows">
+			<os family="windows" />
+		</condition>
+	</target>
+
+	<path id="extra.libs">
+		<fileset dir="${lib.dir}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+
+	<target name="jfsdesktop" depends="init">
+
+		<echo message="Plataforma: ${os.family}" />
+
+		<java classname="com.jfsdesktop.gui.Main" fork="true">
+
+			<jvmarg value="-Djava.library.path=${swt.dir}/${os.family}" />
+
+			<classpath>
+				<path refid="extra.libs" />
+				<fileset file="${jar.file}" />
+				<fileset dir="${swt.dir}/${os.family}">
+					<include name="*.jar" />
+				</fileset>
+			</classpath>
+		</java>
+
+	</target>
+
+	<target name="build.classes" depends="init">
+		<javac srcdir="${source.dir}" destdir="${build.dir}">
+			<classpath refid="extra.libs" />
+			<classpath path="${swt.dir}/${os.family}/swt-windows.jar" />
+		</javac>
+	</target>
+
+	<target name="build.clean">
+		<delete>
+			<fileset dir="${build.dir}">
+				<include name="**/*.*" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="copy.files">
+		<copy todir="${build.dir}">
+			<fileset dir="${source.dir}">
+				<include name="**/*.properties" />
+				<include name="**/*.jpg" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="build.dist" depends="build.classes,copy.files">
+		<jar basedir="${build.dir}" destfile="${jar.file}" />
+	</target>
+	
+	
+</project>
+
+
