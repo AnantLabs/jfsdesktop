@@ -136,7 +136,7 @@ public class GerenciadorIndice {
    *  valor do campo "nome.campo.nomearquivo", definido
    *  no arquivo de configuração.
    *  
-   * @see br.com.javamagazine.lucenedemo.properties.Config
+   * @see com.jfsdesktop.properties.Config
    *
    * @param diretorioIndice Diretório com o índice do Lucene (deve existir).
    * @param nomeArquivo Identificador da entrada a ser removida (caminho completo).
