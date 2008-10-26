@@ -10,7 +10,7 @@ public class Config {
 	
 	static
 	{
-		props = ResourceBundle.getBundle("br.com.javamagazine.lucenedemo.properties.Config");
+		props = ResourceBundle.getBundle("com.jfsdesktop.properties.Config");
 	}
 	
 	public static String getProperty(String key)

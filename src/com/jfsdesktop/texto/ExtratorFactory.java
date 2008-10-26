@@ -10,11 +10,11 @@ import java.util.ResourceBundle;
  *  
  *  <P>O mapeamento de tipos de arquivo para
  *  extratores é definido em:
- *  br.com.javamagazine.lucenedemo.properties.Extrator
+ *  com.jfsdesktop.properties.Extrator
  *  
  *  <P>O mapeamento de extensões para tipos de
  *  arquivo é definido em:
- *  br.com.javamagazine.lucenedemo.properties.Extensoes
+ *  com.jfsdesktop.properties.Extensoes
  *  
  * @see TipoArquivo
  *
@@ -27,7 +27,7 @@ public class ExtratorFactory {
 
 	private ExtratorFactory() {
 		extratoresPorTipoArquivo = ResourceBundle
-				.getBundle("br.com.javamagazine.lucenedemo.properties.Extrator");
+				.getBundle("com.jfsdesktop.properties.Extrator");
 	}
 
 	public static synchronized ExtratorFactory getInstance() {

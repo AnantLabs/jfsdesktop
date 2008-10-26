@@ -16,7 +16,7 @@ public class TipoArquivoHelper {
 
   static {
     handlersPorExtensao = ResourceBundle
-        .getBundle("br.com.javamagazine.lucenedemo.properties.Extensoes");
+        .getBundle("com.jfsdesktop.properties.Extensoes");
 
     Enumeration<String> handlerNames = handlersPorExtensao.getKeys();
     tiposPorExtensaoMapa = new HashMap<String, TipoArquivo>();
