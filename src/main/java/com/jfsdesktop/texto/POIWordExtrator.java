@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.io.StringReader;
 import java.io.StringWriter;
 
-import org.apache.poi.hdf.extractor.WordDocument;
+import org.apache.poi.hwpf.extractor.WordExtractor;
 
 /** <P>Extrator para arquivos MS Word.
  *  <P>Usa a biblioteca Apache POI. 
@@ -17,11 +17,8 @@ public class POIWordExtrator implements Extrator {
     StringReader sReader = null;
 
     try {
-      WordDocument wd = new WordDocument(is);
-      StringWriter docTextWriter = new StringWriter();
-      wd.writeAllText(new PrintWriter(docTextWriter));
-      docTextWriter.close();
-      bodyText = docTextWriter.toString();
+      WordExtractor we = new WordExtractor(is);
+      bodyText = we.getText();
     }
     catch (Exception e) {
       throw new ExtratorException("Erro ao extrair texto de documento Word: "

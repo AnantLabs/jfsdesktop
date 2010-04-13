@@ -143,7 +143,8 @@ public class Main {
 		gridData3.verticalAlignment = org.eclipse.swt.layout.GridData.FILL;
 		gridData3.grabExcessVerticalSpace = true;
 		cTabFolderMain = new CTabFolder(compositeMain, SWT.NONE);
-		cTabFolderMain.setSimple(false);
+		// TODO Fix this
+		//cTabFolderMain.setSimple(false);
 		cTabFolderMain.setSelectionBackground(new Color(Display.getCurrent(),
 				0, 168, 246));
 		cTabFolderMain.setSelectionForeground(new Color(Display.getCurrent(),
