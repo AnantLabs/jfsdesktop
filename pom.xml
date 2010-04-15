@@ -9,8 +9,52 @@
   <url>http://maven.apache.org</url>
 
 
+<!--
+<profiles>
+   <profile>
+     <id>unix</id>
+     <activation>
+           <os>
+             <family>unix</family>
+           </os>
+     </activation>
+     <properties>
+           <swt.os-specific-dep>swt-linux-gtk</swt.os-specific-dep>
+           <swt.version>3.2.2</swt.version>
+     </properties>
+   </profile>
+   <profile>
+     <id>windows</id>
+     <activation>
+           <os>
+             <family>windows</family>
+           </os>
+     </activation>
+     <properties>
+           <swt.os-specific-dep>swt-win32</swt.os-specific-dep>
+           <swt.version>3.2.2</swt.version>
+     </properties>
+   </profile>
+   <profile>
+     <id>mac</id>
+     <activation>
+           <os>
+             <family>macosx</family>
+           </os>
+     </activation>
+     <properties>
+           <swt.os-specific-dep>swt-macosx</swt.os-specific-dep>
+           <swt.version>3.2.2</swt.version>
+     </properties>
+   </profile>
+</profiles>
+
+-->
+
+
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -20,7 +64,31 @@
 		<target>1.5</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <executable>java</executable>
+          <arguments>
+	    <argument>-Djava.library.path=.</argument>
+	    <argument>-classpath</argument>
+	    <classpath/>
+            <argument>com.jfsdesktop.gui.Main</argument>
+          </arguments>
+        </configuration>
+      </plugin>
+
     </plugins>
+
   </build>
 
 
@@ -114,7 +182,14 @@
     <dependency>
       <groupId>swt</groupId>
       <artifactId>swt-linux-gtk</artifactId>
-      <version>3.0m8</version>
+      <version>3.0.1</version>
+      <scope>compile</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>swt</groupId>
+      <artifactId>swt-linux-gtk-pi</artifactId>
+      <version>3.0.1</version>
       <scope>compile</scope>
     </dependency>
 
