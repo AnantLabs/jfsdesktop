@@ -1,0 +1,1 @@
+This is a very simple Java application that uses Apache Lucene and text-extraction libraries to index files for content-based search.
